@@ -1,2 +1,6 @@
 # Auto detect text files and perform LF normalization
-* text=auto
+#* text=auto
+# 表示类型是Java
+*.js linguist-language=Java
+# *.css linguist-language=Java
+#*.html linguist-language=Java
