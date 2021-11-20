@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <title>高铁售票系统 - 车次途经站管理</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+
+    <link rel="shortcut icon" href=""> <link href="css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="css/font-awesome.css?v=4.4.0" rel="stylesheet">
+
+    <!-- jqgrid-->
+    <link href="css/plugins/jqgrid/ui.jqgrid.css" rel="stylesheet">
+
+    <link href="css/animate.css" rel="stylesheet">
+    <link href="css/style.css?v=4.1.0" rel="stylesheet">
+
+    <style>
+        /* Additional style to fix warning dialog position */
+
+        #alertmod_table_tripllist {
+            top: 900px !important;
+        }
+    </style>
+
+</head>
+
+<body class="gray-bg">
+    <div class="wrapper wrapper-content  animated fadeInRight">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="ibox ">
+                    <div class="ibox-title">
+                        <h5>车次途经站列表</h5>
+                    </div>
+                    <div class="ibox-content">
+                        <!--标题 -->
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h1>车次途经站管理</h1>
+                            </div>
+                        </div>
+                        <!--按钮 -->
+                        <div class="row">
+                            <div class="col-md-3 col-md-offset-9 col-sm-4 col-sm-offset-8">
+                                <button class="btn btn-primary" id="trip_via_add_modal_btn">新增</button>
+                                <button class="btn btn-danger" id="trip_via_delete_all_btn">删除</button>
+                            </div>
+                        </div>
+                        <br>
+                        <!--显示表格数据 -->
+                        <div class="row">
+                            <div class="table-responsive col-md-12">
+                                <table class="table table-hover" id="trips_via_table">
+                                    <thead>
+                                    <tr>
+                                        <th>
+                                            <input type="checkbox" id="check_all"/>
+                                        </th>
+                                        <th>ID</th>
+                                        <th>站点</th>
+                                        <th>到达时间</th>
+                                        <th>出发时间</th>
+                                        <th>序号</th>
+                                        <th>操作</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 添加用户弹出的模态框 -->
+    <div class="modal fade" id="tripViaAddModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="tripViaAddModalLabel">添加车次途经站点</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">站点名称</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="stationName" class="form-control" id="stationName_add_input" placeholder="站点名称">
+                                <span class="help-block"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">到达时间</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="reachTime" class="form-control" id="reachTime_add_input" placeholder="到达时间">
+                                <span class="help-block"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">发车时间</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="startTime" class="form-control" id="startTime_add_input" placeholder="发车时间">
+                                <span class="help-block"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">序号</label>
+                            <div class="col-sm-10">
+                                <input type="number" name="orderNum" class="form-control" id="orderNum_add_input" placeholder="序号">
+                                <span  class="help-block"></span>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-primary" id="trip_via_save_btn">保存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--修改用户弹出的模态框 -->
+    <div class="modal fade" id="tripViaReviseModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="tripViaReviseModalLabel">修改车次途经站信息</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">站点名称</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="stationName" class="form-control" id="stationName_revise_input" placeholder="站点名称">
+                                <span class="help-block"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">到达时间</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="reachTime" class="form-control" id="reachTime_revise_input" placeholder="到达时间">
+                                <span class="help-block"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">发车时间</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="startTime" class="form-control" id="startTime_revise_input" placeholder="发车时间">
+                                <span class="help-block"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">序号</label>
+                            <div class="col-sm-10">
+                                <input type="number" name="orderNum" class="form-control" id="orderNum_revise_input" placeholder="序号">
+                                <span  class="help-block"></span>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-primary" id="trip_via_revise_btn">修改</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+   
+    <!-- 全局js -->
+    <script src="js/jquery.min.js?v=2.1.4"></script>
+    <script src="js/bootstrap.min.js?v=3.3.6"></script>
+
+
+    <script src="js/common.js"></script>
+
+
+
+    <!-- 自定义js -->
+    <script src="js/content.js?v=1.0.0"></script>
+    <!-- Page-Level Scripts -->
+    <script src="js/page/tripvialist.js"></script>
+    
+    
+
+</body>
+
+</html>

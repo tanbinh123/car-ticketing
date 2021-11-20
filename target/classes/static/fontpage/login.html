@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+    <title>高铁售票系统 - 登录</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <link href="../css/plugins/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/plugins/font-awesome.css?v=4.4.0" rel="stylesheet">
+    <link href="../css/plugins/animate.css" rel="stylesheet">
+    <link href="../css/plugins/style.css" rel="stylesheet">
+    <link href="../css/plugins/login.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <meta http-equiv="refresh" content="0;ie.html" />
+    <![endif]-->
+    <script>
+        if (window.top !== window.self) {
+            window.top.location = window.location;
+        }
+    </script>
+
+</head>
+
+<body class="signin">
+    <div class="signinpanel">
+        <div class="row">
+            <div class="col-sm-12">
+                <form method="post" action="index.html">
+                    <h4 class="no-margins">登录：</h4>
+                    <p class="m-t-md">登录到高铁售票系统</p>
+                    <input type="text" class="form-control uname" name="username" id="username" placeholder="用户名" />
+                    <input type="password" class="form-control pword m-b" name="password" id="password" placeholder="密码" />
+                    没有账户？去<a href="register.html">注册</a>
+                </form>
+                <button class="btn btn-success btn-block" onClick="loginSubmit()">登录</button>
+            </div>
+        </div>
+        <div class="signup-footer">
+            <div class="pull-left">
+                &copy; 高铁售票系统
+            </div>
+        </div>
+    </div>
+</body>
+<!-- 全局js -->
+<script src="../js/jquery.js?v=2.1.4"></script>
+<script src="../js/plugins/bootstrap.min.js?v=3.3.6"></script>
+<!-- iCheck -->
+<script src="../js/plugins/iCheck/icheck.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('.i-checks').iCheck({
+            checkboxClass: 'icheckbox_square-green',
+            radioClass: 'iradio_square-green',
+        });
+    });
+</script>
+<script src="../js/loginJS.js"></script>
+<script src="../js/custom.js"></script>
+
+</html>

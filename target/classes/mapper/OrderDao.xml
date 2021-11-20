@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.chz.dao.OrderDao">
+
+    <select id="getOrder" resultType="com.chz.pojo.OrderReturn" parameterType="com.github.pagehelper.Page">
+        select * from `order`,`user`,`trips` where `user`.id=`order`.person_id and `order`.car_info_id=`trips`.id and `user`.username=#{userName}
+    </select>
+
+    <select id="getAllOrders" resultType="com.chz.pojo.OrderReturn" parameterType="com.github.pagehelper.Page">
+        select o.id, t.orgin_location, t.destination_location, t.start_time, t.reach_time, t.car_num, t.ticket_price, u.true_name, u.id_card_num, u.phone_num, o.status
+        from `order` o,`user` u,`trips` t
+        where o.person_id=u.id and o.car_info_id=t.id
+    </select>
+
+    <select id="shareEmail" resultType="com.chz.pojo.OrderReturn">
+        select o.id, t.orgin_location, t.destination_location, t.start_time, t.reach_time, t.car_num, t.ticket_price, u.true_name, u.id_card_num, u.phone_num, o.status
+        from `order` o,`user` u,`trips` t
+        where o.person_id=u.id and o.car_info_id=t.id and u.username=#{username} and t.car_num=#{carNum}
+    </select>
+
+
+</mapper>
