@@ -1,8 +1,10 @@
 package com.chz.service.impl;
 
 import com.chz.dao.OrderDao;
+import com.chz.pojo.MoneySum;
 import com.chz.pojo.Order;
 import com.chz.pojo.OrderReturn;
+import com.chz.pojo.Trips;
 import com.chz.service.OrderService;
 import com.github.pagehelper.Page;
 import org.apache.ibatis.annotations.Select;
@@ -67,6 +69,11 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public OrderReturn shareEmail(String username, String carNum) {
         return orderDao.shareEmail(username,carNum);
+    }
+
+    @Override
+    public Page<MoneySum> moneysum() {
+        return orderDao.moneysum();
     }
 }
 

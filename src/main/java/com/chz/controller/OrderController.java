@@ -2,6 +2,7 @@ package com.chz.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.chz.Result.Result;
+import com.chz.pojo.MoneySum;
 import com.chz.pojo.Order;
 import com.chz.pojo.OrderReturn;
 import com.chz.pojo.User;
@@ -14,13 +15,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.*;
 
 /**
  * @author snicker
@@ -280,6 +279,28 @@ public class OrderController {
 
         return modelMap;
     }
+
+    @GetMapping("/moneysum")
+    public Map<String, Object> moneysum(@RequestParam(defaultValue = "1",required = true,value = "pn") Integer pn){
+        Integer pageSize=5;
+        PageHelper.startPage(pn,pageSize);
+        List<MoneySum> moneySums = orderService.moneysum();
+        PageInfo<OrderReturn> pageInfo = new PageInfo(moneySums);
+        Map<String, Object> modelMap=new HashMap<>();
+        if(pageInfo!=null){
+            modelMap.put("code",200);
+            modelMap.put("data",pageInfo);
+        }else {
+            modelMap.put("code",200);
+            Map<String, Object> dataMap = new HashMap<>();
+            dataMap.put("message", "获取财务列表失败");
+            dataMap.put("entity", null);
+            modelMap.put("data", dataMap);
+        }
+        return modelMap;
+    }
+
+
 
 
 }

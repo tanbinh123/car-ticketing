@@ -83,6 +83,12 @@ public interface OrderDao {
      */
     public OrderReturn shareEmail(String username,String carNum);
 
+    /**
+     * 管理员后台查询财务信息
+     * @return
+     */
+    Page<MoneySum> moneysum();
+
 }
 
 

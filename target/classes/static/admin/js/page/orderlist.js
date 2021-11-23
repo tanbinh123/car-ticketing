@@ -62,7 +62,7 @@ $(function () {
             }else if (item.status == 2){
                 status = "<button class='btn-success'>已支付</button>";
             }else if (item.status == 3){
-                status = "<button class='btn-default'>已使用</button>";
+                status = "<button class='btn-default'>已退票</button>";
             }
             var status = $("<td></td>").append(status);
 

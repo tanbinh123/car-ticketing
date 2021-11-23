@@ -1,7 +1,9 @@
 package com.chz.service;
 
+import com.chz.pojo.MoneySum;
 import com.chz.pojo.Order;
 import com.chz.pojo.OrderReturn;
+import com.chz.pojo.Trips;
 import com.github.pagehelper.Page;
 
 /**
@@ -74,7 +76,7 @@ public interface OrderService {
      */
     public OrderReturn shareEmail(String username,String carNum);
 
-
+    public Page<MoneySum> moneysum();
 
 }
 
