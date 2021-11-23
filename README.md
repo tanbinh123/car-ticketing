@@ -38,7 +38,7 @@ jdbc.password=123456
 ```
 
 ### 5、运行项目
-IDEA运行项目，
+IDEA运行项目，  
 打开浏览器http://localhost:8080  ，进入乘客页面，用户名chz，密码123456  
 打开浏览器http://localhost:8080/admin  ，进入管理员页面，管理员用户名admin，密码123456
 
