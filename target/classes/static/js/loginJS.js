@@ -55,7 +55,8 @@ function loginSubmit(){
 	//ajax提交数据
 	$.ajax({
 		type:"post",
-		url:base_url +'/login',
+		// url:base_url +'/login',
+		url:"../login",
 		data:JSON.stringify(json),
 		contentType:'application/json;charset=utf-8',
 		dataType:'json',
@@ -90,13 +91,13 @@ function signupSubmit(){
 		return;
 	}
 	if(passwordAgain !== password){
-		alert("两次输入的密码不一样，请重新输入")
+
 		return;
 	}
 	//ajax传递数据
 	$.ajax({
 	    type:'POST',
-	    url: base_url +'/regist',
+	    url: "../regist",
 	    data:JSON.stringify(json),
 	    contentType:'application/json;charset=utf-8',
 	    dataType:'json',

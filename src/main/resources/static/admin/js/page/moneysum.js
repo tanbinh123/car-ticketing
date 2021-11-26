@@ -16,7 +16,7 @@ $(function () {
     function to_page(pn) {
 
         $.ajax({
-            url: "http://localhost:8080/moneysum",
+            url: "../moneysum",
             data:"pn="+pn,
             type: "GET",
             dataType: "json",

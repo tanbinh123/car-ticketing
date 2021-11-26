@@ -18,7 +18,7 @@ $(function () {
         var carNum = storage.getItem("viaCarNum");
 
         $.ajax({
-            url: "http://localhost:8080/getAimTripsVia",
+            url: "../getAimTripsVia",
             data:"carNum="+carNum,
             type: "GET",
             dataType: "json",
@@ -94,7 +94,7 @@ $(function () {
 
             //2.发送ajax请求保存车次
             $.ajax({
-                url: "http://localhost:8080/saveTripVia",
+                url: "../saveTripVia",
                 type: "POST",
                 data: JSON.stringify({carNum:carNum,stationName:stationName,reachTime:reachTime, startTime:startTime,orderNum:orderNum}),
                 dataType:"json",
@@ -155,7 +155,7 @@ $(function () {
             var startTime = $("#startTime_revise_input").val();
             var orderNum = parseInt($("#orderNum_revise_input").val());
             $.ajax({
-                url:"http://localhost:8080/updateTripVia",
+                url:"../updateTripVia",
                 type:"POST",
                 data:JSON.stringify({id:id,stationName:stationName,startTime:startTime,reachTime:reachTime,orderNum:orderNum}),
                 dataType:"json",
@@ -183,7 +183,7 @@ $(function () {
                 // alert(id);
                 //确认，发送ajax请求删除
                 $.ajax({
-                    url:"http://localhost:8080/deleteTripVia/"+id,
+                    url:"../deleteTripVia/"+id,
                     type:"DELETE",
                     success:function (result) {
                         if (result.code == 200 && result.data.message == "success"){

@@ -18,7 +18,7 @@ $(function () {
     function to_page(pn) {
 
         $.ajax({
-            url: "http://localhost:8080/getalltripsforadmin",
+            url: "../getalltripsforadmin",
             data:"pn="+pn,
             type: "GET",
             dataType: "json",
@@ -178,7 +178,7 @@ $(function () {
 
             //2.发送ajax请求保存车次
             $.ajax({
-                url: "http://localhost:8080/saveTrip",
+                url: "../saveTrip",
                 type: "POST",
                 data: JSON.stringify({orginLocation:orginLocation,destinationLocation:destinationLocation, startTime:startTime,reachTime:reachTime,spanDays:spanDays,carNum:carNum,ticketPrice:ticketPrice,ticketNum:ticketNum}),
                 dataType:"json",
@@ -252,7 +252,7 @@ $(function () {
             var ticketNum =$("#ticketNum_revise_input").val();
 
             $.ajax({
-                url:"http://localhost:8080/updateTripForAdmin",
+                url:"../updateTripForAdmin",
                 type:"POST",
                 data:JSON.stringify({id:id,orginLocation:orginLocation,destinationLocation:destinationLocation,startTime:startTime,reachTime:reachTime,spanDays:spanDays,carNum:carNum,ticketPrice:ticketPrice,ticketNum:ticketNum}),
                 dataType:"json",
@@ -281,7 +281,7 @@ $(function () {
                 // alert(id);
                 //确认，发送ajax请求删除
                 $.ajax({
-                    url:"http://localhost:8080/deleteTrip/"+id,
+                    url:"../deleteTrip/"+id,
                     type:"DELETE",
                     success:function (result) {
                         if (result.code == 200 && result.data.message == "success"){

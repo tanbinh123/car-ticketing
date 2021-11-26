@@ -14,7 +14,7 @@ $(function () {
     function to_page(pn) {
 
         $.ajax({
-            url: "http://localhost:8080/getallmsgs",
+            url: "../getallmsgs",
             data:"pn="+pn,
             type: "GET",
             dataType: "json",
@@ -176,7 +176,7 @@ $(function () {
             var content =$("#content_revise_input").val();
             var sendTime =$("#sendTime_revise_input").val();
             $.ajax({
-                url:"http://localhost:8080/updateMsg",
+                url:"../updateMsg",
                 type:"POST",
                 data:JSON.stringify({id:id,fromUser:fromUser,toUser:toUser,content:content,sendTime:sendTime}),
                 dataType:"json",
@@ -205,7 +205,7 @@ $(function () {
                 // alert(id);
                 //确认，发送ajax请求删除
                 $.ajax({
-                    url:"http://localhost:8080/deleteMsg/"+id,
+                    url:"../deleteMsg/"+id,
                     type:"DELETE",
                     success:function (result) {
                         if (result.code == 200 && result.data.message == "success"){

@@ -185,7 +185,7 @@ function shareEmail(){
     //ajax提交数据
     $.ajax({
         type:"post",
-        url:base_url +'/sendEmail',
+        url:"../sendEmail",
         data:JSON.stringify(json),
         contentType:'application/json;charset=utf-8',
         dataType:'json',

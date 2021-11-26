@@ -16,7 +16,7 @@ $(function () {
     function to_page(pn) {
 
         $.ajax({
-            url: "http://localhost:8080/getallorders",
+            url: "../getallorders",
             data:"pn="+pn,
             type: "GET",
             dataType: "json",
@@ -169,7 +169,7 @@ $(function () {
             var username = $("#username_add_input").val();
             //发送Ajax请求校验姓名是否可用
             $.ajax({
-                url: "http://localhost:8080/checkUser/"+username, ////这种方式是在URL后传参：xxx/xxx
+                url: "../checkUser/"+username, ////这种方式是在URL后传参：xxx/xxx
                 //data: "username=" + username, //这种方式是在URL后传参：xxx?username="xxx"
                 type: "POST",
                 success: function (result) {
@@ -199,7 +199,7 @@ $(function () {
             var age =$("#age_add_input").val();
             //2.发送ajax请求保存员工
             $.ajax({
-                url: "http://localhost:8080/saveUser",
+                url: "../saveUser",
                 type: "POST",
                 data: JSON.stringify({username:username,password:password, trueName:truename,sex:sex,idCardNum:idCardNum,phoneNum:phone,age:age}),
                 dataType:"json",
@@ -252,7 +252,7 @@ $(function () {
             var id = $(this).attr("edit-id");
             var status =$("#status_revise_input").val();
             $.ajax({
-                url:"http://localhost:8080/updateorder",
+                url:"../updateorder",
                 type:"POST",
                 data:JSON.stringify({id:id,status:status}),
                 dataType:"json",
@@ -280,7 +280,7 @@ $(function () {
                 //alert(id);
                 //确认，发送ajax请求删除
                 $.ajax({
-                    url:"http://localhost:8080/deleteOrder/"+id,
+                    url:"../deleteOrder/"+id,
                     type:"DELETE",
                     success:function (result) {
                         if (result.code == 200 && result.data.message == "success"){

@@ -29,6 +29,7 @@ public class LoginController {
     @GetMapping("/login")
     @ResponseBody
     public Result login(@RequestBody JSONObject jsonObject){
+        System.out.println("222");
         User user = new User();
         String password = jsonObject.getString("password");
         String username = jsonObject.getString("username");

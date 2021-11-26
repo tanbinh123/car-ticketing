@@ -9,7 +9,7 @@
     function to_page(pn) {
         var username = window.localStorage.getItem("username");
         $.ajax({
-            url: "http://localhost:8080/getorder",
+            url: "../getorder",
             data: "username=" + username + "&pn=" + pn,
             type: "GET",
             dataType: "json",
@@ -146,7 +146,7 @@
             var id = id;
             var status = 3;
             $.ajax({
-                url:"http://localhost:8080/updateorder",
+                url:"../updateorder",
                 type:"POST",
                 data:JSON.stringify({id:id,status:status}),
                 dataType:"json",

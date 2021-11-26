@@ -477,7 +477,7 @@ $document
 						}
 						$(form).ajaxSubmit({
 							type : "POST",
-							url : base_url +'/updateUserInfo',
+							url : "../updateUserInfo",
 							data : JSON.stringify(json),
 							contentType : 'application/json;charset=utf-8',
 							dataType : 'json',
@@ -519,7 +519,7 @@ $document
 						}
                         $.ajax({
                             type:"post",
-                            url:base_url + '/buyticket',
+                            url:"../buyticket",
                             data:JSON.stringify(json),
                             contentType:'application/json;charset=utf-8',
                             dataType:'json',
@@ -598,7 +598,7 @@ $document
 
 									$.ajax({
 										type:"post",
-										url:base_url +'/getalltrips',
+										url:"../getalltrips",
 										data:JSON.stringify(json),
 										contentType:'application/json;charset=utf-8',
 										dataType:'json',
@@ -755,7 +755,7 @@ $document
 
                                 $.ajax({
                                     type:"post",
-                                    url:base_url +'/updateUserInfo',
+                                    url:"../updateUserInfo",
                                     data:JSON.stringify(json),
                                     contentType:'application/json;charset=utf-8',
                                     dataType:'json',
@@ -885,7 +885,7 @@ $document
 								}
                                 $.ajax({
                                     type:"post",
-                                    url:base_url +'/updateUserInfo',
+                                    url:"../updateUserInfo",
                                     data:JSON.stringify(json),
                                     contentType:'application/json;charset=utf-8',
                                     dataType:'json',
@@ -1312,7 +1312,7 @@ function pay() {
 	// ajax提交数据
 	$.ajax({
 		type : 'POST',
-		url : base_url +'/getpersoninfo',
+		url : "../getpersoninfo",
 		data : JSON.stringify(json),
 		contentType : 'application/json;charset=utf-8',
 		dataType : 'json',
@@ -1350,7 +1350,7 @@ function payed(){
 	//改变订单的状态
 	var id = window.localStorage.getItem("curOrderId");
 	$.ajax({
-		url:"http://localhost:8080/saveOrderPayed/"+id,
+		url:"../saveOrderPayed/"+id,
 		type:"GET",
 		success:function (result) {
 			if (result.code == 200 && result.data.message == "success"){

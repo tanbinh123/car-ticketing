@@ -15,6 +15,7 @@ public class MyMcvConfig {
     @RequestMapping("/")
     public String showfirst(){
         return "redirect:/fontpage/login.html";
+
     }
 
     @RequestMapping("/admin")

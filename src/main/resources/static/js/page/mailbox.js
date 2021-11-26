@@ -6,7 +6,7 @@ to_page();
     function to_page() {
         var username = window.localStorage.getItem("username");
         $.ajax({
-            url: "http://localhost:8080/getReceiveMsg",
+            url: "../getReceiveMsg",
             data: "toUser=" + username,
             type: "GET",
             dataType: "json",

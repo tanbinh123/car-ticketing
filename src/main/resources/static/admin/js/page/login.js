@@ -14,7 +14,7 @@ function loginSubmit(){
     //ajax提交数据
     $.ajax({
         type:"post",
-        url: 'http://localhost:8080/loginAdmin',
+        url: '../loginAdmin',
         data:JSON.stringify(json),
         contentType:'application/json;charset=utf-8',
         dataType:'json',

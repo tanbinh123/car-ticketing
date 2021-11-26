@@ -60,7 +60,7 @@ $(document).on("click",".via-btn",function () {
     var carNum = $(this).parent().parent().parent().find("p").eq(0).text();
     //alert(carNum);
     $.ajax({
-        url:"http://localhost:8080/getAimTripsVia?carNum=" + carNum,
+        url:"../getAimTripsVia?carNum=" + carNum,
         type:"GET",
         success:function (result) {
             //1.解析返回数据

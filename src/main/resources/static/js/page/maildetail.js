@@ -8,7 +8,7 @@ window.onload = function() {
     function getMsgDetail() {
         var id = window.localStorage.getItem("detail-id");
         $.ajax({
-            url: "http://localhost:8080/getReceiveMsgDetail",
+            url: "../getReceiveMsgDetail",
             data: "id=" + id,
             type: "GET",
             dataType: "json",
@@ -38,7 +38,7 @@ window.onload = function() {
 
     function setMsgStatus(id) {
         $.ajax({
-            url: "http://localhost:8080/setMsgStatus",
+            url: "../setMsgStatus",
             data: "id=" + id,
             type: "GET",
             dataType: "json",
