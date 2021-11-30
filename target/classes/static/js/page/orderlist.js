@@ -55,6 +55,9 @@
             var status = $("<td></td>").append(status);
             var ticketPrice = $("<td></td>").append(item.ticketPrice);
             var button1 = $("<button></button>").addClass("btn btn-sm btn-danger").attr("onclick", "refund(" +item.id + ")").append("退票");
+            if(item.status==3){
+                button1 = $("<button></button>").addClass("btn btn-sm btn-warning").append("退票");
+            }
             var button2 = $("<button></button>").addClass("btn btn-sm btn-primary").attr("onclick", "share('" +item.carNum + "')").append("分享");
             var td_btn = $("<td></td>").append(button1).append(button2);
             $("<tr></tr>").append(carNum).append(orginLocation).append(destinationLocation).append(startTime).append(reachTime).append(ticketPrice).append(status)

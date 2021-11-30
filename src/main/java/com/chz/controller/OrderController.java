@@ -181,12 +181,14 @@ public class OrderController {
     @RequestMapping(value = "/updateorder",method = RequestMethod.POST)
     @ResponseBody
     public Map<String, Object> updateUser(@RequestBody Order order){
+        int status=orderService.selectOrderStatus(order);
         int i = orderService.updateOrderStatus(order);
         int status1=orderService.selectOrderStatus(order);
-        //System.out.println(status1);
-        if(status1==3){
-            int tripid=orderService.selectTripId(order);
-            int j=tripsService.increaseTicketNum(tripid);
+        if(status==1 || status==2){
+            if(status1==3){
+                int tripid=orderService.selectTripId(order);
+                int j=tripsService.increaseTicketNum(tripid);
+            }
         }
         Map<String, Object> modelMap = new HashMap<>();
         if (i == 1){
