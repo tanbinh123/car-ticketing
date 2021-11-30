@@ -32,16 +32,39 @@ class CarTicketingApplicationTests {
 	@Test
 	void contextLoads() {
 
-		/*Page<OrderReturn> order = orderDao.getOrder("555");
-		System.out.println(order);*/
+		OrderReturn orderReturn = orderService.shareEmail("aa", "G116");
 
-		OrderReturn orderReturn = orderService.shareEmail("1", "T1126");
+		String trueName = orderReturn.getTrueName();
+		String idCardNum = orderReturn.getIdCardNum();
+		String orginLocation = orderReturn.getOrginLocation();
+		String destinationLocation = orderReturn.getDestinationLocation();
+		String startTime = orderReturn.getStartTime();
+		String reachTime = orderReturn.getReachTime();
+		Double ticketPrice = orderReturn.getTicketPrice();
+		String status = orderReturn.getStatus();
+		if(status=="1"){
+			status="未支付";
+		}else if(status=="2"){
+			status="已支付";
+		}else{
+			status="已退票";
+		}
 
+		String s1 = "姓名："  + trueName + "\n"
+				+ "身份证号：" + idCardNum + "\n"
+				+ "起始站：" + orginLocation + "\n"
+				+ "终点站：" + destinationLocation + "\n"
+				+ "起始时间：" + startTime + "\n"
+				+ "到达时间：" + reachTime + "\n"
+				+ "票价：" + ticketPrice + "\n"
+				+ "状态：" + status + "\n"
+				;
+		System.out.println(s1);
 		SimpleMailMessage mailMessage = new SimpleMailMessage();
 
 		mailMessage.setSubject("snicker，你好");
-		mailMessage.setText(String.valueOf(orderReturn));
-
+		//mailMessage.setText(String.valueOf(orderReturn));
+		mailMessage.setText(s1);
 		mailMessage.setTo("1224228911@qq.com");
 		mailMessage.setFrom("2423545283@qq.com");
 
