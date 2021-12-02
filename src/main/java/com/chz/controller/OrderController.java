@@ -313,7 +313,7 @@ public class OrderController {
         Integer pageSize=5;
         PageHelper.startPage(pn,pageSize);
         List<MoneySum> moneySums = orderService.moneysum();
-        PageInfo<OrderReturn> pageInfo = new PageInfo(moneySums);
+        PageInfo<MoneySum> pageInfo = new PageInfo(moneySums);
         Map<String, Object> modelMap=new HashMap<>();
         if(pageInfo!=null){
             modelMap.put("code",200);

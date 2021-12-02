@@ -47,8 +47,9 @@ $(function () {
         //遍历元素
         $.each(orders, function (index, item) {
             var carNum = $("<td></td>").append(item.carNum);
+            var carCount = $("<td></td>").append(item.carCount);
             var money = $("<td></td>").append(item.money);
-            $("<tr></tr>").append(carNum).append(money).appendTo("#orders_table tbody");
+            $("<tr></tr>").append(carNum).append(carCount).append(money).appendTo("#orders_table tbody");
         })
     }
 

@@ -14,5 +14,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class MoneySum {
     private String carNum;
+    private int carCount;
     private double money;
 }

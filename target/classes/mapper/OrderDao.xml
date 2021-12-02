@@ -22,7 +22,7 @@
     </select>
 
     <select id="moneysum" resultType="com.chz.pojo.MoneySum" parameterType="com.github.pagehelper.Page">
-        select t.car_num,count(o.car_info_id)*t.ticket_price as money
+        select t.car_num,count(o.car_info_id) as carCount,count(o.car_info_id)*t.ticket_price as money
         from `order` o,`trips` t
         where o.car_info_id=t.id and o.status=2
         GROUP BY o.car_info_id

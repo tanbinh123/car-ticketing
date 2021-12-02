@@ -2,10 +2,13 @@ package com.chz;
 
 import com.chz.dao.OrderDao;
 import com.chz.dao.UserDao;
+import com.chz.pojo.MoneySum;
 import com.chz.pojo.OrderReturn;
 import com.chz.pojo.User;
 import com.chz.service.OrderService;
 import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -13,6 +16,9 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 
 import javax.annotation.Resource;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @SpringBootTest
 class CarTicketingApplicationTests {
@@ -80,8 +86,12 @@ class CarTicketingApplicationTests {
 
 	@Test
 	void gogo1(){
-		User wm = userDao.getPersonInfoByUsername("wm");
-		System.out.println(wm);
+		Integer pageSize=5;
+		PageHelper.startPage(1,pageSize);
+		List<MoneySum> moneySums = orderService.moneysum();
+		PageInfo<MoneySum> pageInfo = new PageInfo(moneySums);
+		Map<String, Object> modelMap=new HashMap<>();
+		System.out.println(pageInfo);
 	}
 
 }
